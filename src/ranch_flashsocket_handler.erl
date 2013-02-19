@@ -1,4 +1,4 @@
--module(cowboy_flashsocket_handler).
+-module(ranch_flashsocket_handler).
 
 -type opts() :: any().
 -type state() :: any().
@@ -29,5 +29,5 @@
 	%| {reply, binary(), State, hibernate}
 	| {shutdown, State}
 	when State::state().
--callback flashsocket_terminate(terminate_reason(), cowboy_req:req(), state())
+-callback flashsocket_terminate(terminate_reason(), state())
 	-> ok.
