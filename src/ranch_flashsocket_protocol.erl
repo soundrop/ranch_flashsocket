@@ -29,7 +29,7 @@ init(ListenerPid, Socket, Transport, Opts) ->
 		socket = Socket,
 		transport = Transport
 	},
-	ok = cowboy:accept_ack(ListenerPid),
+	ok = ranch:accept_ack(ListenerPid),
 	case lists:keyfind(handler, 1, Opts) of
 		{_, Handler} ->
 			handler_init(#state{
