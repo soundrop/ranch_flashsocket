@@ -1,4 +1,4 @@
--module(cowboy_flashsocket_connection).
+-module(ranch_flashsocket_connection).
 -export([
 	transport/1
 ]).

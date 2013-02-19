@@ -1,4 +1,4 @@
-PROJECT = cowboy_flashsocket
+PROJECT = ranch_flashsocket
 
 DIALYZER = dialyzer
 REBAR = ./rebar

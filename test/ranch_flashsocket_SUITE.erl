@@ -1,4 +1,4 @@
--module(cowboy_flashsocket_SUITE).
+-module(ranch_flashsocket_SUITE).
 
 -include_lib("common_test/include/ct.hrl").
 -export([

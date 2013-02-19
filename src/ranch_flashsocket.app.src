@@ -1,0 +1,11 @@
+{application, ranch_flashsocket, [
+	{description, "Flash XML socket protocol for Ranch"},
+	{vsn, git},
+	{registered, []},
+	{applications, [
+		kernel,
+		stdlib,
+		ranch
+	]},
+	{env, []}
+]}.

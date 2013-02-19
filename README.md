@@ -1,4 +1,4 @@
-Cowboy Flash XML Socket
-=======================
+Ranch Flash XML Socket Protocol
+===============================
 
-This is a cowboy protocol for Flash XML Sockets
+This is a ranch protocol handler for Flash XML Sockets.
