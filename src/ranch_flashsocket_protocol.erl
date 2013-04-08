@@ -7,6 +7,8 @@
 
 -include("flashsocket.hrl").
 
+-define(ACK_TIMEOUT, 30000).
+
 -record(state, {
 	listener :: pid(),
 	connection :: #flashsocket_connection{},
@@ -25,7 +27,7 @@ start_link(ListenerPid, Socket, Transport, Opts) ->
 %% @private
 -spec init(pid(), inet:socket(), module(), any()) -> ok.
 init(ListenerPid, Socket, Transport, Opts) ->
-	ok = ranch:accept_ack(ListenerPid),
+	ok = ranch:accept_ack(ListenerPid, ?ACK_TIMEOUT),
 	Connection = #flashsocket_connection{
 		socket = Socket,
 		transport = Transport
