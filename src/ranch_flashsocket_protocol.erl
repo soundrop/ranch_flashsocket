@@ -25,9 +25,9 @@ start_link(ListenerPid, Socket, Transport, Opts) ->
 %% @private
 -spec init(pid(), inet:socket(), module(), any()) -> ok.
 init(ListenerPid, Socket, Transport, Opts) ->
-	{ok, Socket1} = ranch:accept_ack(ListenerPid, Socket, Transport, 5000),
+	ok = ranch:accept_ack(ListenerPid),
 	Connection = #flashsocket_connection{
-		socket = Socket1,
+		socket = Socket,
 		transport = Transport
 	},
 	case lists:keyfind(handler, 1, Opts) of
