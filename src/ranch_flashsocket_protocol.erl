@@ -23,7 +23,7 @@ start_link(ListenerPid, Socket, Transport, Opts) ->
 
 
 %% @private
--spec init(pid(), inet:socket(), module(), any()) -> ok.
+-spec init(pid(), inet:socket(), module(), any()) -> closed.
 init(ListenerPid, Socket, Transport, Opts) ->
 	Connection = #flashsocket_connection{
 		socket = Socket,
@@ -73,7 +73,7 @@ handler_init(State) ->
 	end.
 
 %% @private
--spec handler_call(#state{}, any(), atom(), binary()) -> closed.
+-spec handler_call(#state{}, any(), atom(), {text, binary()} | binary()) -> closed.
 handler_call(State, HandlerState, Callback, Message) ->
 	Handler = State#state.handler,
 	try Handler:Callback(Message, HandlerState) of
@@ -145,7 +145,7 @@ flashsocket_loop(State = #state{messages = {OK, Closed, Error}}, HandlerState) -
 	end.
 
 %% @private
--spec flashsocket_data(#state{}, any()) -> ok.
+-spec flashsocket_data(#state{}, any()) -> closed.
 flashsocket_data(State, HandlerState) ->
 	case extract_frame(State#state.buffer) of
 		{Payload, Rest} ->
