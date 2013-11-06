@@ -86,6 +86,9 @@ handler_call(State, HandlerState, Callback, Message) ->
 				_ ->
 					flashsocket_data(State, HandlerState2)
 			end;
+		{shutdown, Reason, HandlerState2} ->
+			flashsocket_send({text, Reason}, State),
+			flashsocket_close(State, HandlerState2, {normal, shutdown});
 		{shutdown, HandlerState2} ->
 			flashsocket_close(State, HandlerState2, {normal, shutdown})
 	catch Class:Reason ->
