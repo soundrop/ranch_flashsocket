@@ -18,16 +18,18 @@
 -callback flashsocket_handle(binary(), State)
 	-> {ok, State}
 	%| {ok, State, hibernate}
-	| {reply, binary(), State}
+	| {reply, {text, binary()}, State}
 	%| {reply, binary(), State, hibernate}
 	| {shutdown, State}
+	| {shutdown, binary(), State}
 	when State::state().
 -callback flashsocket_info(any(), State)
 	-> {ok, State}
 	%| {ok, State, hibernate}
-	| {reply, binary(), State}
+	| {reply, {text, binary()}, State}
 	%| {reply, binary(), State, hibernate}
 	| {shutdown, State}
+	| {shutdown, binary(), State}
 	when State::state().
 -callback flashsocket_terminate(terminate_reason(), state())
 	-> ok.
